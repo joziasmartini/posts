@@ -28,4 +28,10 @@ describe("<Button />", () => {
     const button = screen.getByText(/load more/i);
     expect(button).toBeEnabled();
   });
+
+  test("should match snapshot", () => {
+    const fn = jest.fn();
+    const { container } = render(<Button text="Load more" onClick={fn} />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });
